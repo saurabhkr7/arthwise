@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/$PROJECT_ID/arth-repo/arthwise-api:$SHORT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/arth-repo/arthwise-api:$SHORT_SHA']
+images:
+  - 'asia-south1-docker.pkg.dev/$PROJECT_ID/arth-repo/arthwise-api:$SHORT_SHA'
+substitutions:
+  _REGION: 'asia-south1'
+options:
+  machineType: 'E2_SMALL'
